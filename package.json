@@ -1,0 +1,34 @@
+{
+  "name": "literate-telegram-bot",
+  "version": "1.0.0",
+  "description": "Bot for litterate telegram",
+  "main": "bot.ts",
+  "scripts": {
+    "start": "ts-node bot.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/levg34/literate-telegram-bot.git"
+  },
+  "keywords": [
+    "bot"
+  ],
+  "author": "levg34",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/levg34/literate-telegram-bot/issues"
+  },
+  "homepage": "https://github.com/levg34/literate-telegram-bot#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ws": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/ws": "^8.5.4",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  }
+}
