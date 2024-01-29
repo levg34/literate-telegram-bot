@@ -36,6 +36,7 @@ export class AiChatHistory {
     }
 
     clearHistory(color: string): number {
+        if (!Array.isArray(this.chatHistory[color])) return 0
         const deleted = this.chatHistory[color].length
         delete this.chatHistory[color]
         return deleted

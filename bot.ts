@@ -1,7 +1,7 @@
 import WebSocket from 'ws'
 import { Message } from './message'
 require('dotenv').config()
-import { chat } from './ai'
+import { byeMessage, chat, clearAiHistory } from './ai'
 import { welcomeMessage } from './ai-chat-history'
 
 const ws = new WebSocket(process.env.WS_URL ?? 'ws://localhost:8080')
@@ -29,6 +29,11 @@ ws.on('message', async function message(data) {
         const message: Message = new Message(JSON.parse(stringData))
         if (message.message === 'Connected') {
             sendStringMessage(welcomeMessage)
+        }
+
+        if (message.message === 'Disconnected') {
+            clearAiHistory(message.color)
+            sendStringMessage(byeMessage)
         }
 
         if (message.message.toLowerCase().includes(Message.ME.toLowerCase())) {

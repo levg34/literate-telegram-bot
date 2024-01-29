@@ -26,10 +26,17 @@ const getChatCompletions = async (model: string, messages: AiMessage[]) => {
 
 const fullChatHistory = new AiChatHistory()
 
+export const byeMessage = 'See you!'
+
 export async function chat(message: Message): Promise<string> {
     const chatHistory = fullChatHistory.addMessage(message.color, { role: 'user', content: message.message })
     const chatResponse = await getChatCompletions('mistral-tiny', chatHistory)
     const response = chatResponse.choices[0].message
     fullChatHistory.addMessage(message.color, response)
     return response.content
+}
+
+export function clearAiHistory(color: string): void {
+    const deleted = fullChatHistory.clearHistory(color)
+    console.info(`Deleted for ${color}: ${deleted} chats deleted.`)
 }
